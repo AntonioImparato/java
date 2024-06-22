@@ -17,9 +17,9 @@ public class Prodotto {
 		codice = numero;
 		this.codice = codice;
 		
-		this.setNome(nome);
-		this.setMarca(marca);
-		this.setPrezzo(prezzo);
+		this.nome = nome;
+		this.marca = marca;
+		this.prezzo = prezzo;
 		this.iva = 22.0f ;
 	}
 
@@ -56,8 +56,16 @@ public class Prodotto {
 	}
 
 	public void setIva(float iva) {
-		this.iva = 5;
+		this.iva = iva;
 	}
+	
+	public float prezoIva() {
+		float prezzoConIva;
+		return prezzoConIva = ((prezzo * iva ) / 100) + prezzo;
+		
+	}
+	
+	
 	
 	public static void shop() {
 		System.out.println("Elenco dettagli del prodotto ->");
