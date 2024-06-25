@@ -3,8 +3,8 @@ package org.lessons.java.shop;
 public class Cuffie extends Prodotto{
 	private String colore;
 	private boolean wireless;
-	public Cuffie(String nome, String marca, float prezzo, String colore, boolean wireless) {
-		super(nome, marca, prezzo);
+	public Cuffie(String marca,String modello, float prezzo, String colore, boolean wireless) {
+		super(marca, modello, prezzo);
 		// TODO Auto-generated constructor stub
 		this.colore=colore;
 		this.wireless=wireless;
@@ -25,5 +25,9 @@ public class Cuffie extends Prodotto{
 		this.wireless=wireless;
 	}
 	
+	  @Override
+	    public String toString() {
+	        return "Cuffie  [marca= " + getMarca() +", modello= " + getModello() + ", Prezzo= " + getPrezzo() +"€, colore= " + getColore() + ", Prezzo= " + getPrezzo() + ", Wireless= " + wireless + "]";
+	    }
 	
 }

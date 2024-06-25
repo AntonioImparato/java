@@ -4,8 +4,8 @@ public class Televisori extends Prodotto{
 
 	private float pollici ;
 	private boolean smart;
-	public Televisori(String nome, String marca, float prezzo, float pollici, boolean smart) {
-		super(nome, marca, prezzo);
+	public Televisori(String marca, String modello, float prezzo, float pollici, boolean smart) {
+		super(marca, modello, prezzo);
 		// TODO Auto-generated constructor stub
 		
 		this.pollici=pollici;
@@ -26,4 +26,9 @@ public class Televisori extends Prodotto{
 		public void setSmart(boolean smart) {
 			this.smart=smart;
 		}
+		
+		  @Override
+		    public String toString() {
+		        return "Televisore [Marca= " + getMarca() + ", Modello= " + getModello() + ", Prezzo= " + getPrezzo() + "€, Dimensione= " + pollici + " pollici, Smart=" + smart + "]";
+		    }
 }

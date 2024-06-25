@@ -4,8 +4,8 @@ public class Smarphone extends Prodotto{
 
 	private int imei;
 	private int memoria;
-	public Smarphone(String nome, String marca, float prezzo, int imei, int memoria) {
-		super(nome, marca, prezzo);
+	public Smarphone(String marca, String modello, float prezzo, int imei, int memoria) {
+		super(marca, modello, prezzo);
 		this.imei=imei;
 		this.memoria=memoria;
 		// TODO Auto-generated constructor stub
@@ -26,4 +26,8 @@ public class Smarphone extends Prodotto{
 	public void setMemoria(int memoria) {
 		this.memoria=memoria;
 	}
+	@Override
+    public String toString() {
+        return "Smarphone  [marca= " + getMarca() +", modello= " + getModello() + ", Prezzo= " + getPrezzo() + "€, Memoria=" + memoria + ", IMEI= " + imei + "]";
+    }
 }
