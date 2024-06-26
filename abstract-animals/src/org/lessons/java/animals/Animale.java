@@ -1,7 +1,8 @@
 package org.lessons.java.animals;
 
-public class abstract Animale {
+public abstract class  Animale {
 
-	 public void dormi();
-	 
+	 public abstract void dormi();
+	 public abstract void verso();
+	 public abstract void mangia();
 }
