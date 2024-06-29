@@ -54,6 +54,28 @@ public class Evento {
     }
     // fine metodi get e set 
     
-    
+    public void prenota( ) {
+    	if(this.data.isAfter(LocalDate.now())){
+    		  System.out.println("Errore: L'evento è già passato.");
+    		  return;
+    	}else if(this.numeroPostiPrenotati>= numeroPostiTotali)
+    	{
+    		System.out.println("Errore: I posti sono terminati.");
+    		return;
+    	}
+    	numeroPostiPrenotati++;
+    }
+    public void disdici() {
+        if (data.isBefore(LocalDate.now())) {
+            System.out.println("Errore: L'evento è già passato.");
+            return;
+        }
+        if (numeroPostiPrenotati == 0) {
+            System.out.println("Errore: Non ci sono prenotazioni da disdire.");
+            return;
+        }
+        numeroPostiPrenotati--;
+    }
+  
 
 }
