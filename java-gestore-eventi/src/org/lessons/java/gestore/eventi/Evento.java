@@ -23,5 +23,37 @@ public class Evento {
         this.numeroPostiTotali = numeroPostiTotali;
         this.numeroPostiPrenotati = 0;
     }
+    
+    // inizio metodi get e set
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        if (data.isBefore(LocalDate.now())) {
+            System.out.println("Errore: La data non può essere già passata.");
+            return;
+        }
+        this.data = data;
+    }
+
+    public int getNumeroPostiTotali() {
+        return numeroPostiTotali;
+    }
+
+    public int getNumeroPostiPrenotati() {
+        return numeroPostiPrenotati;
+    }
+    // fine metodi get e set 
+    
+    
 
 }
