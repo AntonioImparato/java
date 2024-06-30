@@ -55,7 +55,7 @@ public class Evento {
     // fine metodi get e set 
     
     public void prenota( ) {
-    	if(this.data.isAfter(LocalDate.now())){
+    	if(this.data.isBefore(LocalDate.now())){
     		  System.out.println("Errore: L'evento è già passato.");
     		  return;
     	}else if(this.numeroPostiPrenotati>= numeroPostiTotali)
@@ -76,6 +76,13 @@ public class Evento {
         }
         numeroPostiPrenotati--;
     }
+    
+    public int postiDisponibili() {
+    	return (numeroPostiTotali - numeroPostiPrenotati);
+    }
   
+    public String toString() {
+    	return this.data+ " "+ titolo;
+    } 
 
 }

@@ -1,6 +1,6 @@
 package org.lessons.java.shop;
 
-import java.util.Scanner;
+  
 
 public class Carrello {
 	
