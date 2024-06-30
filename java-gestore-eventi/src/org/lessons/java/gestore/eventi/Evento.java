@@ -9,22 +9,27 @@ public class Evento {
     private int numeroPostiTotali;
     private int numeroPostiPrenotati;
 
+    // Costruttore che inizializza i campi dell'evento
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
+        // Controllo che la data non sia già passata
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: La data non può essere già passata.");
-            return;
+            return; 
         }
-         if (numeroPostiTotali <= 0) {
+        // Controllo che il numero di posti totali sia positivo
+        if (numeroPostiTotali <= 0) {
            System.out.println("Errore: Il numero di posti totali deve essere positivo.");
-           return;
+           return; 
         }
+        // Inizializzazione dei campi
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
-        this.numeroPostiPrenotati = 0;
+        this.numeroPostiPrenotati = 0; 
     }
     
-    // inizio metodi get e set
+    // Metodi getter e setter per accedere e modificare i campi
+    
     public String getTitolo() {
         return titolo;
     }
@@ -40,7 +45,7 @@ public class Evento {
     public void setData(LocalDate data) {
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: La data non può essere già passata.");
-            return;
+            return; 
         }
         this.data = data;
     }
@@ -52,37 +57,46 @@ public class Evento {
     public int getNumeroPostiPrenotati() {
         return numeroPostiPrenotati;
     }
-    // fine metodi get e set 
     
-    public void prenota( ) {
-    	if(this.data.isBefore(LocalDate.now())){
-    		  System.out.println("Errore: L'evento è già passato.");
-    		  return;
-    	}else if(this.numeroPostiPrenotati>= numeroPostiTotali)
-    	{
-    		System.out.println("Errore: I posti sono terminati.");
-    		return;
-    	}
-    	numeroPostiPrenotati++;
+    // Metodo per prenotare un posto
+    public void prenota() {
+        // Controllo se l'evento è già passato
+        if (this.data.isBefore(LocalDate.now())) {
+            System.out.println("Errore: L'evento è già passato.");
+            return; 
+        }
+        // Controllo se ci sono ancora posti disponibili
+        else if (this.numeroPostiPrenotati >= numeroPostiTotali) {
+            System.out.println("Errore: I posti sono terminati.");
+            return; 
+        }
+        numeroPostiPrenotati++; 
     }
+
+    // Metodo per disdire una prenotazione
     public void disdici() {
+        // Controllo se l'evento è già passato
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: L'evento è già passato.");
-            return;
+            return; 
         }
+        // Controllo se ci sono prenotazioni da disdire
         if (numeroPostiPrenotati == 0) {
             System.out.println("Errore: Non ci sono prenotazioni da disdire.");
-            return;
+            return; 
         }
-        numeroPostiPrenotati--;
+        numeroPostiPrenotati--; 
     }
     
+    // Metodo che restituisce il numero di posti disponibili
     public int postiDisponibili() {
-    	return (numeroPostiTotali - numeroPostiPrenotati);
+        return (numeroPostiTotali - numeroPostiPrenotati);
     }
-  
+    
+    // Override del metodo toString per fornire una rappresentazione testuale dell'evento
+    @Override
     public String toString() {
-    	return this.data+ " "+ titolo;
+        return this.data + " " + titolo;
     } 
 
 }
