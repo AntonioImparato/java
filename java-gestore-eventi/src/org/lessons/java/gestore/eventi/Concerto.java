@@ -29,8 +29,16 @@ public class Concerto extends Evento{
 		this.ora = ora;
 	}
 
-	public String formatta() {
-		return super.getData() + ""+ this.getOra();
+	public String infoConcertoData() {
+		return super.getData() + " ora: "+ this.ora;
 		
+	}
+	public String infoConcertoPRezzo () {
+		 String prezzoFormattato = String.format("%.2f", this.prezzo);
+		 return prezzoFormattato;
+	}
+	
+	public String toString () {
+		return "Data concerto: " + this.infoConcertoData() + "nome evento:" + super.getTitolo() + " prezzo:" + this.infoConcertoPRezzo() + "€";
 	}
 }

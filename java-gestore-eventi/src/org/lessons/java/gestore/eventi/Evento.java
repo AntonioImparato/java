@@ -14,7 +14,7 @@ public class Evento {
         // Controllo che la data non sia già passata
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: La data non può essere già passata.");
-            return; 
+            return ; 
         }
         // Controllo che il numero di posti totali sia positivo
         if (numeroPostiTotali <= 0) {
@@ -78,12 +78,12 @@ public class Evento {
         // Controllo se l'evento è già passato
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: L'evento è già passato.");
-            return; 
+            return ; 
         }
         // Controllo se ci sono prenotazioni da disdire
         if (numeroPostiPrenotati == 0) {
             System.out.println("Errore: Non ci sono prenotazioni da disdire.");
-            return; 
+            return ; 
         }
         numeroPostiPrenotati--; 
     }
