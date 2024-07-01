@@ -21,7 +21,7 @@ public class Concerto extends Evento{
 		this.prezzo = prezzo;
 	}
 	
-	public LocalTime getora() {
+	public LocalTime getOra() {
 		return this.ora;
 	}
 	
@@ -29,4 +29,8 @@ public class Concerto extends Evento{
 		this.ora = ora;
 	}
 
+	public String formatta() {
+		return super.getData() + ""+ this.getOra();
+		
+	}
 }

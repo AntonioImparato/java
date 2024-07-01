@@ -70,7 +70,7 @@ public class Main {
 			
 			System.out.println("Posti prenotati: " + evento.getNumeroPostiPrenotati());
 			System.out.println("Posti disponibili: " + evento.postiDisponibili());
-			
+			System.out.println("Posti prenotati: " + evento.toString());
 //	            evento.disdici();
 //	    		
 //	        	System.out.println(evento.getData());

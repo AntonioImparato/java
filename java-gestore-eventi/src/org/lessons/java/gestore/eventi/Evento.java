@@ -96,7 +96,7 @@ public class Evento {
     // Override del metodo toString per fornire una rappresentazione testuale dell'evento
     @Override
     public String toString() {
-        return this.data + " " + titolo;
+        return this.data + " " + this.titolo;
     } 
 
 }
