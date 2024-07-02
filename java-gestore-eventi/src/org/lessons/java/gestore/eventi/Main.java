@@ -9,14 +9,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
-		boolean inputCorretto;
+		boolean controllo;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 		Concerto concerto = null;
 		LocalTime ora = null;
 		 //do while per rinserire un evento se l'utenete sbaglia  
 		 do { 
 			 
-			 System.out.println("Inserisci il nome dell'evento");
+			    System.out.println("Inserisci il nome dell'evento");
 				String titolo = scanner.nextLine();
 				
 				System.out.println("Inserisci i numeri di posti per l'evento");
@@ -50,28 +50,24 @@ public class Main {
 				
 				// creo il mio oggetto data fornendo i valori separati 
 				LocalDate data = LocalDate.of(anno,mese, giorno);
-				  // Controllo che la data non sia già passata
-		        if (data.isBefore(LocalDate.now()) || posti <= 0) {
-		            System.out.println("Errore: La data non può essere già passata.");
-		            inputCorretto = false; 
-		        } else if ( posti <= 0) {
-		            System.out.println("Errore: iposti devono essere maggiori di 0.");
-		            inputCorretto = false; 
-		        	}
-		        // creazione dell'oggetto cooncerto
-		        else { concerto = new Concerto (titolo , data , posti, prezzo ,ora );
-		        inputCorretto = true;	
-		        }
+		
+		    
+		        concerto = new Concerto (titolo , data , posti, prezzo ,ora );
+		        if (concerto.getData()==null) {
+		           
+		        	controllo = false;
+		        } else controllo = true;
+		        
 				
 			} catch (NumberFormatException e ) {
 				System.out.println("errore nel inserimento della data ricordati che il formato è aaaa/mm/GG ");
-				 inputCorretto = false;
+				controllo = false;
 			} catch (DateTimeParseException e) {
                 System.out.println("Errore nell'inserimento dell'ora. Ricordati che il formato è HH:mm.");
-                inputCorretto = false;
+                controllo = false;
 			} 
 			
-		 } while (!inputCorretto);
+		 } while (!controllo);
 		
 		
 			System.out.println("Vuoi effetuare delle prenotazioni (true per si /false per no ) ?");
@@ -79,7 +75,7 @@ public class Main {
 			
 			if(scelta) 
 			{
-				System.out.println("Posti disponibili: "+concerto.postiDisponibili()+" quante prenotazioni vuoi effettuare ?" );
+				System.out.println("Posti disponibili: "+concerto.postiDisponibili()+" quante prenotazioni vuoi effettuare?" );
 				int prenotazioni = scanner.nextInt();
 				
 				if (prenotazioni <= concerto.postiDisponibili() && prenotazioni > 0 ) 
@@ -96,7 +92,7 @@ public class Main {
 			System.out.println("Posti prenotati: " + concerto.getNumeroPostiPrenotati());
 			System.out.println("Posti disponibili: " + concerto.postiDisponibili());
 			
-			System.out.println("Vuoi disdire qualche prenotazione (true per si /false per no)  ?");
+			System.out.println("Vuoi disdire qualche prenotazione (true per si /false per no)?");
 		//  riusiamo la stessa variabile 
 			scelta = scanner.nextBoolean();
 			

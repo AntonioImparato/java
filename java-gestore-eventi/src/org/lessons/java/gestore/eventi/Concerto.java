@@ -38,7 +38,8 @@ public class Concerto extends Evento{
 		 return prezzoFormattato;
 	}
 	
+	  @Override
 	public String toString () {
-		return "Data concerto: " + this.infoConcertoData() + "nome evento:" + super.getTitolo() + " prezzo:" + this.infoConcertoPRezzo() + "€";
+		return "Data concerto: " + this.infoConcertoData() + " nome evento: " + super.getTitolo() + " prezzo: " + this.infoConcertoPRezzo() + "€";
 	}
 }
