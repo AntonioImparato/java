@@ -1,7 +1,6 @@
 package org.lessons.java.gestore.eventi;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Evento {
     private String titolo;
@@ -93,7 +92,7 @@ public class Evento {
         return (numeroPostiTotali - numeroPostiPrenotati);
     }
     
-    // Override del metodo toString per fornire una rappresentazione testuale dell'evento
+ // Override del metodo toString() per rappresentare l'oggetto Evento come stringa
     @Override
     public String toString() {
         return this.data + " " + this.titolo;
