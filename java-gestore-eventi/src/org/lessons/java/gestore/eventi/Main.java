@@ -10,9 +10,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
 		boolean inputCorretto;
-		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-		 Concerto concerto = null;
-		 LocalTime ora = null;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		Concerto concerto = null;
+		LocalTime ora = null;
 		 //do while per rinserire un evento se l'utenete sbaglia  
 		 do { 
 			 
@@ -22,6 +22,7 @@ public class Main {
 				System.out.println("Inserisci i numeri di posti per l'evento");
 				int posti = scanner.nextInt();
 				scanner.nextLine();
+				
 				
 				System.out.println("Inserisci il costo dei biglietti");
 				float prezzo = scanner.nextFloat();
@@ -49,11 +50,18 @@ public class Main {
 				
 				// creo il mio oggetto data fornendo i valori separati 
 				LocalDate data = LocalDate.of(anno,mese, giorno);
-			
-				// creazione dell'oggetto cooncerto
-		        concerto = new Concerto (titolo , data , posti, prezzo ,ora );
+				  // Controllo che la data non sia già passata
+		        if (data.isBefore(LocalDate.now()) || posti <= 0) {
+		            System.out.println("Errore: La data non può essere già passata.");
+		            inputCorretto = false; 
+		        } else if ( posti <= 0) {
+		            System.out.println("Errore: iposti devono essere maggiori di 0.");
+		            inputCorretto = false; 
+		        	}
+		        // creazione dell'oggetto cooncerto
+		        else { concerto = new Concerto (titolo , data , posti, prezzo ,ora );
 		        inputCorretto = true;	
-					
+		        }
 				
 			} catch (NumberFormatException e ) {
 				System.out.println("errore nel inserimento della data ricordati che il formato è aaaa/mm/GG ");
@@ -61,10 +69,7 @@ public class Main {
 			} catch (DateTimeParseException e) {
                 System.out.println("Errore nell'inserimento dell'ora. Ricordati che il formato è HH:mm.");
                 inputCorretto = false;
-            }
-	        
-	        
-             
+			} 
 			
 		 } while (!inputCorretto);
 		
