@@ -10,16 +10,19 @@ public class Evento {
 
     // Costruttore che inizializza i campi dell'evento
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
+    	
         // Controllo che la data non sia già passata
         if (data.isBefore(LocalDate.now())) {
             System.out.println("Errore: La data non può essere già passata.");
             return ; 
         }
+        
         // Controllo che il numero di posti totali sia positivo
         if (numeroPostiTotali <= 0) {
            System.out.println("Errore: Il numero di posti totali deve essere positivo.");
            return; 
         }
+        
        //  Inizializzazione dei campi
         this.titolo = titolo;
         this.data = data;
@@ -28,7 +31,6 @@ public class Evento {
     }
     
     // Metodi getter e setter per accedere e modificare i campi
-    
     public String getTitolo() {
         return titolo;
     }
@@ -97,5 +99,5 @@ public class Evento {
     public String toString() {
         return this.data + " " + this.titolo;
     } 
-
+    
 }
