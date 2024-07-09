@@ -50,6 +50,7 @@ public class Evento {
         }
         this.data = data;
     }
+    
 
     public int getNumeroPostiTotali() {
         return numeroPostiTotali;

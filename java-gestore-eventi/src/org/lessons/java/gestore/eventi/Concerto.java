@@ -1,5 +1,6 @@
 package org.lessons.java.gestore.eventi;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -48,4 +49,5 @@ public class Concerto extends Evento{
 	public String toString () {
 		return "Data concerto: " + this.infoConcertoData() + " nome evento: " + super.getTitolo() + " prezzo: " + this.infoConcertoPRezzo() + "€";
 	}
+	  
 }
