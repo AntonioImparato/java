@@ -1,6 +1,5 @@
 package org.lessons.java.gestore.eventi;
 
-import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -39,7 +38,7 @@ public class Concerto extends Evento{
 	}
 	
 	// Metodo per ottenere il prezzo formattato del concerto
-	public String infoConcertoPRezzo () {
+	public String infoConcertoPrezzo () {
 		 String prezzoFormattato = String.format("%.2f", this.prezzo);
 		 return prezzoFormattato;
 	}
@@ -47,7 +46,7 @@ public class Concerto extends Evento{
 	// Override del metodo toString() per rappresentare l'oggetto Concerto come stringa
 	  @Override
 	public String toString () {
-		return "Data concerto: " + this.infoConcertoData() + " nome evento: " + super.getTitolo() + " prezzo: " + this.infoConcertoPRezzo() + "€";
+		return "Data concerto: " + this.infoConcertoData() + " nome evento: " + super.getTitolo() + " prezzo: " + this.infoConcertoPrezzo() + "€";
 	}
 	  
 }

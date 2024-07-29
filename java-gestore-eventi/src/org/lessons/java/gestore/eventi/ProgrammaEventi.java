@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 
 public class ProgrammaEventi {
@@ -47,10 +48,11 @@ public class ProgrammaEventi {
     
 //    public String stampaEventiInOrdine() {
 //    	List<Evento> eventiOrdinati = new ArrayList<Evento>();
+//    	Collections.sort(eventi.sort(data));
 //    	for(Evento evento : eventi) {
 //    		eventiOrdinati.add(evento);
 //    	}
-//    	//eventiOrdinati.sort();
+//    	
 //    	
 //    }
     

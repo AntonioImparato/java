@@ -9,11 +9,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
-		boolean controllo;
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		boolean controllo = false ;
+		DateTimeFormatter formatterOra = DateTimeFormatter.ofPattern("HH:mm");
 		Concerto concerto = null;
 		LocalTime ora = null;
-		ProgrammaEventi programma = new ProgrammaEventi("summer");
 		 // Ciclo do-while per permettere all'utente di reinserire i dati in caso di errore
 		 do { 
 			 //Acquisizione dei dati forniti dall'utente:
@@ -36,7 +35,7 @@ public class Main {
 		            
 			 try {
 				 // converto l'ora inserita dall'utente in localTime
-				 ora = LocalTime.parse(oraUtente, formatter);
+				 ora = LocalTime.parse(oraUtente, formatterOra);
 				
 				 // Dividi la stringa dataEvento usando il carattere "/"
 				 String[] parti = dataEvento.split("/");
@@ -52,13 +51,12 @@ public class Main {
 				// Crea l'oggetto Concerto utilizzando i dati inseriti dall' utente
 				 concerto = new Concerto (titolo , data , posti, prezzo ,ora );
 				 
-				 // Controlla se la data inserita è valida se non lo è ripete il ciclo
+				//  Controllo su una instanza dell'ogetto se è null richiede informazioni
 				 if (concerto.getData()==null) {
 					 controllo = false;
 				 } else {
 					 controllo = true;
-					 programma.aggiungiEvento(concerto);
-					 programma.aggiungiEvento(concerto);
+					
 				 } 
 		        
 			 } catch (NumberFormatException e ) {
@@ -70,9 +68,7 @@ public class Main {
 			} 
 			
 		 } while (!controllo);
-		 
-		 programma.getEventi().get(1).toString();
-		
+	
 		// Fase di prenotazione dei posti
 		System.out.println("Vuoi effetuare delle prenotazioni (true per si /false per no ) ?");
 		boolean scelta = scanner.nextBoolean();
@@ -123,7 +119,7 @@ public class Main {
 			System.out.println("Posti prenotati: " + concerto.getNumeroPostiPrenotati());
 			System.out.println("Posti disponibili: " + concerto.postiDisponibili());
 			 // Visualizza info Concerto con il metodo toString
-			System.out.println("Posti prenotati: " + concerto.toString());
+			System.out.println(concerto.toString());
 
 			scanner.close();
 	}
