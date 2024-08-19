@@ -1,5 +1,4 @@
-package com.example.demo.controllo;
-
+package com.example.demo;
 import java.time.LocalTime;
 
 import org.springframework.stereotype.Controller;
