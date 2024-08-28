@@ -17,6 +17,7 @@ public class controllo {
 		public String welcom(@RequestParam(name = "name") String name,Model model) {
 		model.addAttribute("name", name);
 		model.addAttribute("time", LocalTime.now());
+		model.addAttribute("email", "antonio1@dgsts.com");
 		return "welcom";
 		}
 		
