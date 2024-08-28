@@ -1,4 +1,4 @@
-package com.example.demo.control;
+package com.example.demo.contollo;
 
 import java.time.LocalTime;
 
@@ -11,19 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class HomeControl {
+public class control {
 
-		@GetMapping("/greeting")
-		public String greeting(@RequestParam(name = "name") String name,Model model) {
+		@GetMapping("/welcom")
+		public String welcom(@RequestParam(name = "name") String name,Model model) {
 		model.addAttribute("name", name);
 		model.addAttribute("time", LocalTime.now());
 		return "greeting";
 		}
 		
-		@GetMapping("/home")
-		public String home() {
-		return "home";
-		}
 }
-
-
