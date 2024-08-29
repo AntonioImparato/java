@@ -5,11 +5,14 @@
    		
 	</head>
 	<body >
-		
-			<header th:insert="fragments :: navbar('movies')">
-			</header>
-			<p th:text="${movies}"></p>
-			
-			
+		<header th:insert="fragments :: navbar('movies')">
+		</header>
+		<main>
+			<ul class="list-group">
+			  <li class="list-group-item" th:each="movie : ${moviesList}">
+					[[ ${movie.title} ]]
+			  </li>
+		    </ul>
+		</main>	
 	</body>
 </html>

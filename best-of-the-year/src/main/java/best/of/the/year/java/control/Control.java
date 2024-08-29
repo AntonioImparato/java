@@ -44,25 +44,16 @@ public class Control {
 	    @GetMapping("/movies")
 	    public String getMovies(Model model) {
 	    	model.addAttribute("title", "list of our best movies");
-	    	
-	    	String bestMovies = "" ;
-	    	for (Movie movie : getBestMovies()) {
-	    		bestMovies += movie.getTitle() + " -- ";
-	    	}
-	        model.addAttribute("movies", bestMovies);
-	        return "list";
+	   
+	        model.addAttribute("moviesList", getBestMovies());
+	        return "media";
 	    }
 
 	    @GetMapping("/songs")
 	    public String getSongs(Model model) {
 	    	model.addAttribute("title", "list of our best Songs");
-	    	
-	    	String bestSongs = "" ;
-	    	for (Song songs : getBestSongs()) {
-	    		bestSongs += songs.getTitle() + " -- ";
-	    	}
-	        model.addAttribute("movies", bestSongs);
-	        return "list";
+	        model.addAttribute("song", getBestSongs());
+	        return "song";
    
 	    }
 	    

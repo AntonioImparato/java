@@ -2,14 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	
 	<head th:replace="fragments :: head" >
-   		
 	</head>
 	<body >
 		
 			<header th:insert="fragments :: navbar('songs')">
 			</header>
-			<p th:text="${movies}"></p>
-			
+	
+			<ul class="list-group">
+			  <li class="list-group-item" th:each="song : ${songsList}">
+				[[ ${song.title} ]]
+			  </li>
+			</ul>
 			
 	</body>
 </html>
