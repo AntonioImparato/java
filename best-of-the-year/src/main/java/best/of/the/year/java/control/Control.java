@@ -3,11 +3,10 @@ package best.of.the.year.java.control;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -18,7 +17,7 @@ public class Control {
 	
 	@GetMapping("/home")
 	public String homePage(Model model) {
-	model.addAttribute("name", "antonio");
+	model.addAttribute("title", "Best of the year");
 	return "home";
 	
 	}
@@ -28,11 +27,7 @@ public class Control {
 		 movies.add(new Movie(1,"The Dark Knight"));
 		 movies.add(new Movie(2,"Inception"));
 		 return movies;
-//	         List.of(
-//	            new Movie(1, "Inception"),
-//	            new Movie(2, "The Dark Knight"),
-//	            new Movie(3, "Interstellar")
-//	        );
+
 	    }
 
 	    private List<Song> getBestSongs() {
@@ -55,7 +50,7 @@ public class Control {
 	    		bestMovies += movie.getTitle() + " -- ";
 	    	}
 	        model.addAttribute("movies", bestMovies);
-	        return "movie";
+	        return "list";
 	    }
 
 	    @GetMapping("/songs")
@@ -67,8 +62,38 @@ public class Control {
 	    		bestSongs += songs.getTitle() + " -- ";
 	    	}
 	        model.addAttribute("movies", bestSongs);
-	        return "movie";
+	        return "list";
    
+	    }
+	    
+	    @GetMapping("/movie/{id}")
+	    public String getMovie(Model model, @PathVariable ("id") Integer movieId) {
+	    	model.addAttribute("title", "the best movie");
+	    	String movieTitle = null ;
+	    	for (Movie movie : getBestMovies()) {
+	    		if(movieId.equals(movie.getId())) {
+	    			movieTitle = movie.getTitle();
+	    			break;
+	    		}
+	    	
+	    	}
+	        model.addAttribute("movies", movieTitle);
+	        return "media";
+	    }
+	    
+	    @GetMapping("/song/{id}")
+	    public String getSong(Model model, @PathVariable ("id") Integer songId) {
+	    	model.addAttribute("title", "the best song");
+	    	String songTitle = null ;
+	    	for (Song song : getBestSongs()) {
+	    		if(songId.equals(song.getId())) {
+	    			songTitle = song.getTitle();
+	    			break;
+	    		}
+	    	
+	    	}
+	        model.addAttribute("movies", songTitle);
+	        return "song";
 	    }
 }
 	

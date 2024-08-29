@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="fragments :: head" >
+   		
+	</head>
+	<body >
+		
+			<header th:insert="fragments :: navbar('songs')">
+			</header>
+			<p th:text="${movies}"></p>
+			
+			
+	</body>
+</html>
+
+
+
+
+
+
+
+<!--
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Best Songs of the Year</title>
+    <title>Best songs of the Year</title>
 </head>
 <body>
-    <h1>Best Songs of the Year</h1>
-    <p th:text="${songs}"></p>
+   
+	<div>
+		<h1 th:text="${title}" ></h1>
+		<p th:text="${name}"></p>
+	</div>
+	<p th:text="${name}"></p>
+		</div>
+		
+		<!-- Bootstrap Bundle with Popper -->
+		<!-- 
+		<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
+-->

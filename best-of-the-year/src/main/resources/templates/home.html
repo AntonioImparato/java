@@ -1,10 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Home</title>
-	</head>
+	<head th:insert="fragments :: head" >
+	
+
+	
 	<body>
-		<div>
+		<header th:insert="fragments :: navbar('home')">
+			<div class="container bg-body-tertiary ">
+			</header>
 			<h1 th:text="'Best of the year by  ' + ${name} + '!'"/>
 	</body>
+	
+	<footer th:replace="fragments :: scripts"></footer>
 </html>

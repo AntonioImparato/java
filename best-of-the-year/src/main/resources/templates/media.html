@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="fragments :: head" >
+   		
+	</head>
+	<body >
+		
+			<header th:insert="fragments :: navbar('movies')">
+			</header>
+			<p th:text="${movies}"></p>
+			
+			
+	</body>
+</html>
