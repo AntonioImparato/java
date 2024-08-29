@@ -52,7 +52,7 @@ public class Control {
 	    @GetMapping("/songs")
 	    public String getSongs(Model model) {
 	    	model.addAttribute("title", "list of our best Songs");
-	        model.addAttribute("song", getBestSongs());
+	        model.addAttribute("songsList", getBestSongs());
 	        return "song";
    
 	    }
