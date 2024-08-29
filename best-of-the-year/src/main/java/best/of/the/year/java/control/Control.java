@@ -1,6 +1,7 @@
 package best.of.the.year.java.control;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,39 +23,51 @@ public class Control {
 	
 	}
 	 private List<Movie> getBestMovies() {
-	        return List.of(
-	            new Movie(1, "Inception"),
-	            new Movie(2, "The Dark Knight"),
-	            new Movie(3, "Interstellar")
-	        );
+		 List<Movie> movies = new ArrayList<Movie>();
+		 movies.add(new Movie(0,"il signore degli anelli"));
+		 movies.add(new Movie(1,"The Dark Knight"));
+		 movies.add(new Movie(2,"Inception"));
+		 return movies;
+//	         List.of(
+//	            new Movie(1, "Inception"),
+//	            new Movie(2, "The Dark Knight"),
+//	            new Movie(3, "Interstellar")
+//	        );
 	    }
 
 	    private List<Song> getBestSongs() {
-	        return List.of(
-	            new Song(1, "Bohemian Rhapsody"),
-	            new Song(2, "Stairway to Heaven"),
-	            new Song(3, "Hotel California")
-	        );
+	      
+	    	 List<Song> songs = new ArrayList<Song>();
+	    	 songs.add(new Song(0,"La regola del amico"));
+	    	 songs.add(new Song(1,"bellissima"));
+	    	 songs.add(new Song(2,"he joe"));
+			 return songs;
+	    
+	        
 	    }
 
 	    @GetMapping("/movies")
 	    public String getMovies(Model model) {
-	        List<Movie> movies = getBestMovies();
-	        String movieTitles = movies.stream()
-	                                    .map(Movie::getTitle)
-	                                    .collect(Collectors.joining(", "));
-	        model.addAttribute("movies", movieTitles);
+	    	model.addAttribute("title", "list of our best movies");
+	    	
+	    	String bestMovies = "" ;
+	    	for (Movie movie : getBestMovies()) {
+	    		bestMovies += movie.getTitle() + " -- ";
+	    	}
+	        model.addAttribute("movies", bestMovies);
 	        return "movie";
 	    }
 
 	    @GetMapping("/songs")
 	    public String getSongs(Model model) {
-	        List<Song> songs = getBestSongs();
-	        String songTitles = songs.stream()
-	                                 .map(Song::getTitle)
-	                                 .collect(Collectors.joining(", "));
-	        model.addAttribute("songs", songTitles);
-	        return "song";
+	    	model.addAttribute("title", "list of our best Songs");
+	    	
+	    	String bestSongs = "" ;
+	    	for (Song songs : getBestSongs()) {
+	    		bestSongs += songs.getTitle() + " -- ";
+	    	}
+	        model.addAttribute("movies", bestSongs);
+	        return "movie";
    
 	    }
 }
