@@ -9,8 +9,14 @@
 			</header>
 	
 			<ul class="list-group">
-			  <li class="list-group-item" th:each="song : ${songsList}">
-				[[ ${song.title} ]]
+			  <li class="list-group-item" th:each="song : ${songsList}" th:object="${song}">
+				<a th:href="@{ /song/{songId}(songId=${song.id}) }">
+					[[ ${song.title} ]]
+				</a>
+			<!--	<a th:href="@{| /songs/${song.id}) |}">
+					[[ ${song.title} ]]
+				</a> 
+				!-->
 			  </li>
 			</ul>
 			

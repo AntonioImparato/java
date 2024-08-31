@@ -9,8 +9,10 @@
 		</header>
 		<main>
 			<ul class="list-group">
-			  <li class="list-group-item" th:each="movie : ${moviesList}">
+			  <li class="list-group-item" th:each="movie : ${moviesList}" th:object="${movie}">
+						<a th:href="@{ /movie/{movieId}(movieId=${movie.id}) }">
 					[[ ${movie.title} ]]
+						</a>
 			  </li>
 		    </ul>
 		</main>	
