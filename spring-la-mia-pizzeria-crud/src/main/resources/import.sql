@@ -1,0 +1,2 @@
+INSERT INTO pizze (prezzo, updated_at, descrizione, nome, url_foto) VALUES
+(7.50, NOW(), 'Pizza classica con pomodoro, mozzarella e basilico', 'Margherita', 'https://example.com/images/margherita.jpg');

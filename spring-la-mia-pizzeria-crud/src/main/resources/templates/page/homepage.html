@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="fragments/fragments :: head" >
+	</head>
+	<body>
+		<header th:insert="fragments/navbar :: navbar('pizze')"></header>
+		<main>
+			<div class="row">
+				<h1>homePAGE</h1>
+			</div>
+		</main>
+	</body>
+	
+	<footer th:replace="fragments/fragments :: footer"></footer>
+	<th:block th:replace="fragments/fragments :: scripts"></th:block>
+</html>
