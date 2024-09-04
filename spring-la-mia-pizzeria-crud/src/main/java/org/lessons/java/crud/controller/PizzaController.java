@@ -26,6 +26,11 @@ public class PizzaController {
 		return "/pizze/index";
 	} 
 
+	@GetMapping("/findByNome/{nome}")
+	public String findByNome(@PathVariable("nome") String nome , Model model) {
+		model.addAttribute("pizze", repo.findByNomeContains(nome));
+		return "/pizze/index";
+	}
 	@GetMapping("/show/{id}")
 	public String show(@PathVariable("id") Integer id , Model model) {
 		model.addAttribute("pizza", repo.findById(id).get());
