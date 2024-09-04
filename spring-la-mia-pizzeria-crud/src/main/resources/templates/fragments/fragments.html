@@ -1,18 +1,25 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="head">
-        <title>Pizzeria</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
-    </head>
 
-    <body>
-     
+<head th:fragment="head">
+	<title>Pizzeria</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet">
+</head>
 
-        <footer th:fragment="footer" class="mt-4">
-            <div class="container">
+<body>
+	<th:block th:fragment="form">
+	<form th:action="@{/pizze}" method="GET">
+		<div class="input-group input-group-sm mb-3">
+			<span class="input-group-text" id="inputGroup-sizing-sm">cerca pizze</span>
+			<input type="text" class="form-control" name="nome">
+			<input type="submit" class="form-control btn btn-sm btn-warning ">
+		</div>
+	</form>
+	</th:block>
+	<footer th:fragment="footer" class="mt-4">
+		<div class="container">
                 <p>&copy; 2024 La Mia Pizzeria</p>
 				<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
             </div>
