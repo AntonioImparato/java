@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/fragments :: head">
+	<title>aggiungi pizza</title>
+</head>
+
+<body>
+	<header th:insert="fragments/navbar :: navbar('pizze/create')"></header>
+
+	<main class="container">
+		<div class:"row">
+			<div class:"col-12">
+
+				<h1 class="mb-4">aggiungi pizza</h1>
+				<form id="pizza-form" th:object=${pizza} th:action="@{/pizze/create}" method="POST">
+					
+					<th:block th:if="${#fields.hasErrors()}">
+					<ul class="alert alert-danger p-2">
+						<li class="ps-4"
+						 th:each="err : ${#fields.allErrors()}" 
+						 th:text="${err}">
+						</li>
+					</ul>
+					</th:block>
+					<div class="mb-3">
+						<label for="nome" class="form-label">Nome della pizza </label>
+						<input type="text" class="form-control" id="nome" th:field="*{nome}">
+					</div>
+					<div class="mb-3">
+						<label for="descrizione" class="form-label">descrizione</label>
+						<textarea class="form-control" id="descrizione" rows="3" th:field="*{descrizione}"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="url" class="form-label">URL Foto: </label>
+						<input type="text" class="form-control" id="url" th:field="*{urlFoto}">
+					</div>
+					<div class="mb-3">
+						<label for="prezzo" class="form-label">prezzo: </label>
+						<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}">
+					</div>
+					<div class=" mb-3 text-center">
+						<input type="submit" class=" btn btn-sm btn-success me-auto" value="aggiungi pizza">
+						<input type="reset" class=" btn btn-sm btn-warning " value="reset">
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+	<footer th:insert="fragments/fragments :: footer"></footer>
+</body>
+</html>

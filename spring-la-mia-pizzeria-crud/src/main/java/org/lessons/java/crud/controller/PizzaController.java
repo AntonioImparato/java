@@ -8,10 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/pizze")
@@ -31,7 +36,6 @@ public class PizzaController {
         }
         
         model.addAttribute("pizze", pizze);
-        model.addAttribute("nome", nome); // Aggiungi il nome al modello
         return "/pizze/index";
     } 
 
@@ -39,6 +43,24 @@ public class PizzaController {
     public String show(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("pizza", repo.findById(id).get());
         return "/pizze/show";
+    }
+    
+    @GetMapping("/create")
+    public String add( Model model) {
+    	 model.addAttribute("pizza", new Pizza());
+        return "pizze/create";
+    }
+    
+    @PostMapping("/create")
+    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, 
+    					BindingResult bindingResult,
+    					Model model )
+    {
+    	if(bindingResult.hasErrors()) {
+    		return"pizze/create";
+    	}
+    	 repo.save(formPizza);
+    	return"redirect:/pizze";
     }
     
     public String listPizze(@RequestParam(required = false) String nome, Model model) {
