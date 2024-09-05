@@ -14,8 +14,8 @@
 
 				<h1 class="mb-4">aggiungi pizza</h1>
 				<form id="pizza-form" th:object=${pizza} th:action="@{/pizze/create}" method="POST">
-					
-					<th:block th:if="${#fields.hasErrors()}">
+
+					<!--	<th:block th:if="${#fields.hasErrors()}">
 					<ul class="alert alert-danger p-2">
 						<li class="ps-4"
 						 th:each="err : ${#fields.allErrors()}" 
@@ -23,21 +23,46 @@
 						</li>
 					</ul>
 					</th:block>
+					-->
 					<div class="mb-3">
 						<label for="nome" class="form-label">Nome della pizza </label>
-						<input type="text" class="form-control" id="nome" th:field="*{nome}">
+						<input type="text" class="form-control" id="nome" th:field="*{nome}" th:errorClass="is-invalid">
+
+						<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+							</ul>
+						</div>
 					</div>
 					<div class="mb-3">
 						<label for="descrizione" class="form-label">descrizione</label>
-						<textarea class="form-control" id="descrizione" rows="3" th:field="*{descrizione}"></textarea>
+						<textarea class="form-control" id="descrizione" rows="3" th:field="*{descrizione}"
+							th:errorClass="is-invalid">></textarea>
+						<div th:if="${#fields.hasErrors('descrizione')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('descrizione')}" th:text="${err}"></li>
+							</ul>
+						</div>
 					</div>
 					<div class="mb-3">
 						<label for="url" class="form-label">URL Foto: </label>
-						<input type="text" class="form-control" id="url" th:field="*{urlFoto}">
+						<input type="text" class="form-control" id="url" th:field="*{urlFoto}"
+							th:errorClass="is-invalid">>
+						<div th:if="${#fields.hasErrors('urlFoto')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('urlFoto')}" th:text="${err}"></li>
+							</ul>
+						</div>
 					</div>
 					<div class="mb-3">
 						<label for="prezzo" class="form-label">prezzo: </label>
-						<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}">
+						<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}"
+							th:errorClass="is-invalid"> >
+						<div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
+							<ul>
+								<li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
+							</ul>
+						</div>
 					</div>
 					<div class=" mb-3 text-center">
 						<input type="submit" class=" btn btn-sm btn-success me-auto" value="aggiungi pizza">
@@ -49,4 +74,5 @@
 	</main>
 	<footer th:insert="fragments/fragments :: footer"></footer>
 </body>
+
 </html>
