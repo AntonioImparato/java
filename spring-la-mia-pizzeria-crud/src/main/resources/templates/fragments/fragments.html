@@ -18,6 +18,16 @@
 		</div>
 	</form>
 	</th:block>
+	
+	<div th:fragment="successAlert(message)" class="alert alert-success alert-dismissible fade show" role="alert">
+			<span th:text="${message}"> </span>
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	<div th:fragment="deleteAlert(message)" class="alert alert-danger alert-dismissible fade show" role="alert">
+			<span th:text="${message}"> </span>
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	
 	<footer th:fragment="footer" class="mt-4">
 		<div class="container">
                 <p>&copy; 2024 La Mia Pizzeria</p>
